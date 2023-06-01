@@ -9,7 +9,10 @@ import {
   RiArrowDownSLine,
   RiCheckboxBlankCircleFill,
   RiThumbUpLine,
-  RiChat1Line
+  RiChat1Line,
+  RiUser3Line,
+  RiLogoutCircleRLine,
+  RiSettings3Line,
 } from "react-icons/ri";
 import Link from "next/link";
 
@@ -27,7 +30,7 @@ const Header = (props) => {
         </div>
       </form>
       <nav className="flex items-center gap-2 text-lg">
-        {/* Messages */}
+        {/* Messages DropDown */}
         <Menu as="div">
           <Menu.Button className="hover:bg-gray-200 p-2 rounded-lg transition-colors relative">
             <RiMessage2Line />
@@ -42,7 +45,7 @@ const Header = (props) => {
           >
             <Menu.Items
               as="section"
-              className="absolute top-6 right-0 bg-gray-100 w-72 shadow-lg p-4"
+              className="absolute top-6 left:0 md:right-0 bg-gray-100 w-72 shadow-lg p-4"
             >
               <div>
                 <h1 className="font-medium text-center mb-4">Mensajes</h1>
@@ -99,7 +102,7 @@ const Header = (props) => {
             </Menu.Items>
           </Transition>
         </Menu>
-        {/* Notifications */}
+        {/* Notifications DropDown */}
         <Menu as="div">
           <Menu.Button className="hover:bg-gray-200 p-2 rounded-lg transition-colors relative">
             <RiNotification4Line />
@@ -115,7 +118,7 @@ const Header = (props) => {
           >
             <Menu.Items
               as="section"
-              className="absolute top-6 right-0 bg-gray-100 w-72 shadow-lg p-4"
+              className="absolute top-6 left:0 md:right-0 bg-gray-100 w-72 shadow-lg p-4"
             >
               <div>
                 <h1 className="font-medium text-center mb-4">Notificaciones</h1>
@@ -151,8 +154,9 @@ const Header = (props) => {
             </Menu.Items>
           </Transition>
         </Menu>
-        
-        <button className="items-center gap-4 flex hover:bg-gray-200 py-2 px-4 rounded-lg transition-colors">
+        {/* User DropDown */}
+        <Menu as="div">
+          <Menu.Button className="items-center gap-4 flex hover:bg-gray-200 py-2 px-4 rounded-lg transition-colors">
           <Image
             src={"/chica.jpg"}
             width={60}
@@ -162,7 +166,67 @@ const Header = (props) => {
           />
           <span>José Marcano</span>
           <RiArrowDownSLine />
-        </button>
+          </Menu.Button>
+          <Transition
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items
+              as="section"
+              className="absolute top-6 right-0 bg-gray-100 w-72 shadow-lg p-4"
+            >
+              <div>
+                <Menu.Item>
+                <Link href={""} className="flex items-center gap-4 p-2 rounded-lg hover:bg-white transition-colors ">
+                <Image
+                      src={"/chica.jpg"}
+                      width={80}
+                      height={80}
+                      className="w-8 h-8 rounded-full object-cover ring-4 ring-white"
+                      alt="Hola"
+                    />
+                  <div>
+                    <h5 className="text-base">José R Marcano</h5>
+                    <p className="text-xs text-gray-400">Jmarcanoy@gmail.com</p>
+                  </div>
+                </Link>
+                  
+                </Menu.Item>
+                <hr className="my-2"/>
+                <Menu.Item>
+                <Link href={""} className="flex items-center gap-4 p-2 rounded-lg hover:bg-white transition-colors  text-base">
+                  <RiUser3Line className=""/>
+                  <div>
+                    <h5 className="text-base">Perfil</h5>
+                  </div>
+                </Link>
+                  
+                </Menu.Item>
+                <Menu.Item>
+                <Link href={""} className="flex items-center gap-4 p-2 rounded-lg hover:bg-white transition-colors  text-base">
+                  <RiSettings3Line className=""/>
+                  <div>
+                    <h5 className="text-base">Configuracion</h5>
+                  </div>
+                </Link>
+                </Menu.Item>
+                <Menu.Item>
+                <Link href={""} className="flex items-center gap-4 p-2 rounded-lg hover:bg-white transition-colors  text-base">
+                  <RiLogoutCircleRLine className=""/>
+                  <div>
+                    <h5 className="text-base">Salir</h5>
+                  </div>
+                </Link>
+                </Menu.Item>
+                
+              </div>
+            </Menu.Items>
+          </Transition>
+        </Menu>
       </nav>
     </header>
   );
